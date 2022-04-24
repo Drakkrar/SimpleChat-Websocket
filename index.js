@@ -3,7 +3,10 @@ var socket = require('socket.io');
 
 /// App
 let app = express();
-let portlst = 4000;
+let portlst = proccess.env.PORT || 4000;
+
+// Static
+app.use(express.static('public'));
 
 let svlistener = app.listen(portlst, function () {
     console.log(`Listening on ${portlst} port.`);
@@ -31,6 +34,3 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('typing', formatedData);
     })
 });
-
-// Static
-app.use(express.static('public'));
