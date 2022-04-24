@@ -16,7 +16,7 @@ server.listen(portlst, function(){
 })
 
 // Socket setup
-var io = socket(svlistener);
+var io = socket(server);
 io.on('connection', function (socket) {
     console.log(`[Socket] ${socket.id} connection was made.`);
 
