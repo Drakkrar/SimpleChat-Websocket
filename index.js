@@ -3,7 +3,7 @@ var socket = require('socket.io');
 
 /// App
 let app = express();
-let portlst = proccess.env.PORT || 4000;
+let portlst = process.env.PORT || 4000;
 
 // Static
 app.use(express.static('public'));
