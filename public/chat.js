@@ -1,4 +1,4 @@
-let socket = io.connect('http://localhost:4000');
+let socket = io();
 
 // Query DOM
 let message = document.getElementById('message'),

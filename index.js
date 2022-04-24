@@ -1,19 +1,22 @@
 var express = require('express');
 var socket = require('socket.io');
+var http = require('http');
 
 /// App
-let app = express();
-let portlst = process.env.PORT || 4000;
+var app = express();
+var portlst = process.env.PORT || 4000;
+var server = http.Server(app);
 
 // Static
 app.use(express.static('public'));
 
-let svlistener = app.listen(portlst, function () {
-    console.log(`Listening on ${portlst} port.`);
-});
+// Listener
+server.listen(portlst, function(){
+    console.log(`Listening on port ${portlst}`);
+})
 
 // Socket setup
-let io = socket(svlistener);
+var io = socket(svlistener);
 io.on('connection', function (socket) {
     console.log(`[Socket] ${socket.id} connection was made.`);
 
